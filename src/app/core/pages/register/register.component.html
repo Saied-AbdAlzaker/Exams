@@ -1,0 +1,72 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmitForm()" class="max-w-sm mx-auto m:p-10">
+    <h2 class="text-2xl mb-5">Sign up</h2>
+    @if (apiError) {
+    <div class="flex text-sm text-red-800 rounded-lg dark:bg-gray-800 dark:text-red-400 mt-3 mb-8" role="alert">
+        {{apiError}}
+    </div>
+    }
+    <div class="mb-5">
+        @let userNameControll = registerForm.get('username');
+        <input type="username" id="username" formControlName="username"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Enter userName" required />
+        <app-error-message [nameControll]="userNameControll"></app-error-message>
+    </div>
+    <div class="flex gap-5">
+        <div class="mb-5">
+            @let firstNameControll = registerForm.get('firstName');
+            <input type="firstName" id="firstName" formControlName="firstName"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Enter first name" required />
+            <app-error-message [nameControll]="firstNameControll"></app-error-message>
+        </div>
+        <div class="mb-5">
+            @let lastNameControll = registerForm.get('lastName');
+            <input type="lastName" id="lastName" formControlName="lastName"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Enter last name" required />
+            <app-error-message [nameControll]="lastNameControll"></app-error-message>
+        </div>
+    </div>
+    <div class="mb-5">
+        @let emailControll = registerForm.get('email');
+        <input type="email" id="email" formControlName="email"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Enter email" required />
+        <app-error-message [nameControll]="emailControll"></app-error-message>
+    </div>
+    <div class="mb-5">
+        @let passwordControll = registerForm.get('password');
+        <input type="password" id="password" formControlName="password"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Password" required />
+        <app-error-message [nameControll]="passwordControll"></app-error-message>
+    </div>
+    <div class="mb-5">
+        @let rePasswordControll = registerForm.get('rePassword');
+        <input type="password" id="rePassword" formControlName="rePassword"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Confirm password" required />
+        <app-error-message [nameControll]="rePasswordControll"></app-error-message>
+    </div>
+    <div class="mb-5">
+        @let phoneControll = registerForm.get('phone');
+        <input type="tel" id="phone" formControlName="phone"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Phone number" required />
+        <app-error-message [nameControll]="phoneControll"></app-error-message>
+    </div>
+    <div class="text-center text-sm text-[#313131]">
+        Already have an account?
+        <a routerLink="/auth/signin" routerLinkActive="router-link-active"
+            class="text-color text-sm mx-1 cursor-pointer">
+            Login</a>
+    </div>
+    <button type="submit"
+        class="text-white w-full bg-[#4461F2] cursor-pointer mt-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        @if (isLoading) {
+        <i class="fa fa-spin fa-spinner"></i>
+        }@else {
+        Create Account
+        }</button>
+</form>

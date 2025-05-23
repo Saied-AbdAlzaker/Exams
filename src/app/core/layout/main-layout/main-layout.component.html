@@ -1,0 +1,28 @@
+<div class="lg:flex lg:justify-center">
+    <div class="md:w-[20%] p-5">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="md:w-[80%]">
+        <div class="lg:flex lg:justify-around lg:p-5">
+            <form class="w-[60%]">
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <input type="text" id="search-address-icon"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-md"
+                        placeholder="Search Quiz">
+                </div>
+            </form>
+            <div>
+                <button class="btn w-36 shadow-md">Start Quiz</button>
+            </div>
+            <!-- <div>
+                <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" class="mr-2" size="xlarge" shape="circle" />
+                <p-avatar icon="pi pi-user" class="mr-2" size="large"  />
+
+            </div> -->
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+</div>

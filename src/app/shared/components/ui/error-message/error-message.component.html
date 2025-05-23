@@ -1,0 +1,18 @@
+@if (nameControll?.errors && nameControll?.touched) {
+    <div class="flex text-sm text-red-800 rounded-lg dark:bg-gray-800 dark:text-red-400" role="alert">
+        <ul class="mt-1.5 list-disc list-inside">
+            @if (nameControll?.getError('required')) {
+            <li>required</li>
+            }@else if (nameControll?.getError('minlength')) {
+            <li>Min character is 5</li>
+            }@else if (nameControll?.getError('maxlength')) {
+            <li>Max character is 20</li>
+            }@else if (nameControll?.getError('email')) {
+            <li>Invalid email</li>
+            }@else if (nameControll?.getError('pattern')) {
+            <li>Invalid pattern</li>
+            }
+       
+        </ul>
+    </div>
+    }
