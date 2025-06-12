@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { SubjectsService } from '../../../../services/subjects/subjects.service';
-import { AllSubjects, Subject } from '../../../../../shared/interfaces/subjects';
 import { RouterLink } from '@angular/router';
+import { AllSubjects, Subject } from '../../interfaces/subjects';
+import { SubjectsService } from '../../services/subjects/subjects.service';
 
 @Component({
   selector: 'app-quiz-card',

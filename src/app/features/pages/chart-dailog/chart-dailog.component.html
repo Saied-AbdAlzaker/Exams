@@ -1,0 +1,19 @@
+<p-dialog header="Your score" [modal]="true" [(visible)]="chartDailog" [style]="{ width: '50rem' }"
+    [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" [closable]="false">
+    <div class="flex flex-col justify-center items-center">
+        <div class="card flex justify-center">
+            <p-chart type="pie" [data]="data" [options]="options" class="w-full md:w-[20rem]" />
+        </div>
+
+        <!-- Next & Back  -->
+        <div class="flex justify-between">
+            <button class="btn-question" routerLink="/">Back</button>
+            <button class="btn-question" (click)="showResult()">Show results</button>
+        </div>
+
+    </div>
+</p-dialog>
+
+@if (showResultsDailog) {
+    <app-show-results-dailog [showResultsDailog]="showResultsDailog" [answerError]="answerError"></app-show-results-dailog>
+}

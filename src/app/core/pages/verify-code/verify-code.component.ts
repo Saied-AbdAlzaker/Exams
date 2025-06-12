@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'auth';
 import { ErrorMessageComponent } from '../../../shared/components/ui/error-message/error-message.component';
+import { AuthService } from '../../../../../projects/auth/src/lib/auth.service';
 
 @Component({
   selector: 'app-verify-code',

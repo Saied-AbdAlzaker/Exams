@@ -5,7 +5,7 @@
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-3 my-3">
         @for (item of subjects; track $index) {
-        <a [routerLink]="[`/dashboard/diploma/${item._id}`]" class="relative cursor-pointer shadow-md">
+        <a [routerLink]="[`/diploma/${item._id}`]" class="relative cursor-pointer shadow-md">
             <img [alt]="item?.name" [src]="item.icon" class="w-full h-full object-cover" />
 
             <div class="rounded-2xl absolute bottom-4 max-w-full bg-[#1935CA66] p-4 sm:p-6 lg:p-4">

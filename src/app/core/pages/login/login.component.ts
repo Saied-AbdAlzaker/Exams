@@ -1,11 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { AuthService } from 'auth';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ErrorMessageComponent } from "../../../shared/components/ui/error-message/error-message.component";
 import { Store } from '@ngrx/store';
 import { loginSuccess } from '../../../store/auth/auth.actions';
 import { HelperService } from '../../../shared/services/helper.service';
+import { AuthService } from '../../../../../projects/auth/src/lib/auth.service';
 
 @Component({
   selector: 'app-login',

@@ -20,3 +20,7 @@ body {
 .btn{
     @apply text-white bg-[#4461F2] cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
 }
+
+.btn-question{
+    @apply text-[#4461F2] border bottom-1 border-[#4461F2] cursor-pointer hover:bg-[#4461F2] hover:text-white font-medium rounded-2xl text-sm px-5 py-2.5 text-center w-[45%];
+}

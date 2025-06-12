@@ -15,13 +15,13 @@ export const routes: Routes = [
             { path: 'reset-password', canActivate: [loggedInGuard], loadComponent: () => import('./core/pages/reset-password/reset-password.component').then(c => c.ResetPasswordComponent) },
         ]
     },
+    // { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     {
-        path: 'dashboard', component: MainLayoutComponent, children: [
-            { path: '', canActivate: [authGuard], loadComponent: () => import('./features/pages/home/home.component').then(c => c.HomeComponent) },
-            { path: "quiz-history", canActivate: [authGuard], loadComponent: () => import('./features/pages/home/components/quiz-history/quiz-history.component').then(c => c.QuizHistoryComponent) },
-            { path: "quiz-container", canActivate: [authGuard], loadComponent: () => import('./features/pages/home/components/quiz-container/quiz-container.component').then(c => c.QuizContainerComponent) },
-            { path: "diploma/:quizId", canActivate: [authGuard], loadComponent: () => import('./features/pages/home/components/diploma/diploma.component').then(c => c.DiplomaComponent) },
-        ]
+        path: '', component: MainLayoutComponent, children: [
+            { path: 'dashboard', canActivate: [authGuard], loadComponent: () => import('./features/pages/dashboard/dashboard.component').then(c => c.DashboardComponent) },
+            { path: "quiz-history", canActivate: [authGuard], loadComponent: () => import('./features/pages/quiz-history/quiz-history.component').then(c => c.QuizHistoryComponent) },
+            { path: "all-quiz", canActivate: [authGuard], loadComponent: () => import('./features/pages/all-quiz/all-quiz.component').then(c => c.AllQuizComponent) },
+            { path: "diploma/:quizId", canActivate: [authGuard], loadComponent: () => import('./features/pages/diploma/diploma.component').then(c => c.DiplomaComponent) }]
     }
 
 ];

@@ -26,7 +26,7 @@ export class SidebarComponent {
     {
       title: 'Quiz History',
       icon: 'fa-solid fa-q',
-      link: '/dashboard/quiz-history'
+      link: '/quiz-history'
     }
   ]
 

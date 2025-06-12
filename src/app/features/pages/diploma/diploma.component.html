@@ -1,0 +1,22 @@
+<section class="p-5">
+    @for (item of listDiploma; track item._id) {
+    <div class="flex justify-between items-center bg-[#F9F9F9] p-5 shadow-md rounded-2xl">
+        <div>
+            <h2>{{item.title}}</h2>
+            <p class="text-sm text-[#535353]">{{item.numberOfQuestions}} Question</p>
+        </div>
+        <div>
+            <p class="text-sm text-[#535353] mb-3">{{item.duration}} Minutes</p>
+            <a class="btn" (click)="showDialog(item._id,item.duration)">Start</a>
+        </div>
+    </div>
+    }@empty {
+    <div class="flex justify-center items-center p-32 shadow-2xl">
+        <h2 class="text-2xl">No Data</h2>
+    </div>
+    }
+
+    @if(visible){
+    <app-exam-modal [examId]="examId" [minutes]="examDuration" [visible]="visible"></app-exam-modal>
+    }
+</section>

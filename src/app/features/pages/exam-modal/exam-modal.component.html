@@ -1,0 +1,59 @@
+<p-dialog header="Instructions" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }"
+    [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" [closable]="false">
+    <div class="flex flex-col justify-center items-center">
+        <p>Do you Want To start Exam</p>
+        <button class="btn my-3" (click)="startExam()">Start</button>
+    </div>
+</p-dialog>
+
+
+<p-dialog header="" [modal]="true" [(visible)]="visibleExam" [style]="{ width: '50rem' }"
+    [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" [closable]="false">
+    <div class="flex flex-col justify-between items-center">
+        <h2>Question {{questionNumber + 1}} of {{questionList.length}}</h2>
+        <div class="flex items-center">
+            <i class="fa-regular fa-clock me-3 text-2xl text-blue-800"></i>
+            {{minutes}}:{{seconds | number:'2.0'}}
+        </div>
+    </div>
+    <!-- questionNumber -->
+    <div class="flex justify-evenly gap-3 my-4">
+        @for (question of questionList; track question._id; let i = $index) {
+        <span [class]="questionNumber == i || questionNumber > i ? 'text-blue-700':'text-slate-600'">
+            {{i+1}}
+        </span>
+        }
+    </div>
+    <!-- questionList -->
+    <div class="flex flex-col p-5">
+        @for (question of questionList; track question._id; let i = $index) {
+        @if(questionNumber == i){
+        <h2 class="mb-3">{{question.question}}</h2>
+        @for (answer of question.answers; track answer.key) {
+        <div class="flex gap-2 my-2">
+            <input type="radio" name="radioDefault" [id]="answer.key" [value]="answer.answer" [(ngModel)]="answerValue">
+            <label [for]="answer.key">
+                {{answer.answer}}
+            </label>
+        </div>
+        }
+        }
+        }
+    </div>
+    <!-- Next & Back  -->
+    <div class="flex justify-between">
+        <button class="btn-question" (click)="startExam()" (click)="backQuestion()"
+            [disabled]="questionNumber == 0">Back</button>
+        @if(questionNumber < questionList.length -1){ <button class="btn-question" (click)="startExam()"
+            (click)="nextQuestion()" [disabled]="answerValue == undefined">Next</button>
+            }
+            <!-- Finish Exam -->
+        @if(questionNumber == questionList.length -1){ <button class="btn-question" (click)="finishExam()"
+                [disabled]="answerValue == undefined">Finish Exam</button>
+            }
+    </div>
+</p-dialog>
+
+@if (chartDailog) {
+    <app-chart-dailog [chartDailog]="chartDailog" [questionList]="questionList" [answerError]="answerError"></app-chart-dailog>
+}

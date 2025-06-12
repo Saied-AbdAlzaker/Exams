@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SidebarComponent } from '../../../features/pages/home/components/sidebar/sidebar.component';
+import { SidebarComponent } from '../../../features/pages/sidebar/sidebar.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
 // import { AvatarModule } from 'primeng/avatar';
 // import { AvatarGroupModule } from 'primeng/avatargroup';
