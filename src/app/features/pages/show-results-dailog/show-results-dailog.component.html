@@ -6,15 +6,13 @@
         @for (question of answerError; track question.id) {
         <h2 class="mb-3 font-bold">{{question.question}}</h2>
         @for (answer of question.answers; track answer.key) {
-        <div class="flex gap-2 my-2" [class.bg-success]="question.correctAnswer == answer.key">
-            <div [class.bg-danger]="question.answerKey == answer.key">
-
-                <input type="radio" [name]="question.question" [id]="question.id+answer.key"
-                    [value]="question.answerKey" disabled="true" [checked]="question.answerKey == answer.key">
-                <label [for]="question.id+answer.key">
-                    {{answer.answer}}
-                </label>
-            </div>
+        <div class="flex gap-2 my-2 p-3 rounded-2xl" [class.bg-green-500]="question.correctAnswer == answer.key"
+            [class.bg-red-500]="question.answerUserKey == answer.key">
+            <input type="radio" [name]="question.question" [id]="question.id+answer.key"
+                [value]="question.answerUserKey" [checked]="question.answerUserKey == answer.key" disabled="true">
+            <label [for]="question.id+answer.key">
+                {{answer.answer}}
+            </label>
         </div>
         }
         }

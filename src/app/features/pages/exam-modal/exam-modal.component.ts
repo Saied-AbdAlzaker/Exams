@@ -21,9 +21,9 @@ export class ExamModalComponent implements OnDestroy {
   answerValue: string | undefined;
   answerExam: AnswerExam[] = [];
   answerError: AnswerExam[] = [];
-  correct:number=0;
-  inCorrect:number=0;
-  chartDailog:boolean = false;
+  correct: number = 0;
+  inCorrect: number = 0;
+  chartDailog: boolean = false;
 
   @Input() visible: boolean = false;
   @Input() examId?: string;
@@ -40,48 +40,28 @@ export class ExamModalComponent implements OnDestroy {
       this._questionService.getAllQuestions(this.examId).subscribe({
         next: (res) => {
           this.questionList = res.questions
-          console.log(this.questionList);
+          // console.log(this.questionList);
         }, error: (err) => {
-          console.log(err.message);
+          // console.log(err.message);
         }
       })
     }
   }
-  // Timer
-  startTime() {
-    this.timeIntervel = setInterval(() => {
-      if (this.seconds === 0) {
-        if (this.minutes > 0) {
-          this.minutes--;
-          this.seconds = 59;
-        } else {
-          this.stopTime()
-        }
-      } else {
-        this.seconds--
-      }
-    }, 1000)
-  }
-  stopTime() {
-    if (this.timeIntervel) {
-      clearInterval(this.timeIntervel)
-    }
-  }
 
   // Next Answer
-  nextQuestion() {
+  nextQuestion() {    
     if (this.answerValue) {
       if (this.questionNumber >= 0 && this.questionNumber < this.questionList.length) {
         const selectAnswer = this.questionList[this.questionNumber].answers.find(
           (item) => { item.answer === this.answerValue }
-        );
+        );        
         this.answerExam.push({
           id: this.questionList[this.questionNumber]._id,
           question: this.questionList[this.questionNumber].question,
           correctAnswer: this.questionList[this.questionNumber].correct,
           answers: this.questionList[this.questionNumber].answers,
           answerUser: this.answerValue,
-          answerKey: selectAnswer ? selectAnswer?.key : null
+          answerUserKey: selectAnswer ? selectAnswer?.answer : null
         });
 
         if (this.questionNumber < this.questionList.length - 1) {
@@ -102,14 +82,38 @@ export class ExamModalComponent implements OnDestroy {
   }
 
   // Finish Exam
-  finishExam(){
+  finishExam() {
     this.nextQuestion();
-    this.answerError = this.answerExam.filter((item)=> item.correctAnswer !== item.answerKey);
+    this.answerError = this.answerExam.filter((item) => item.correctAnswer !== item.answerUserKey);
     console.table(this.answerError);
     this.visibleExam = false;
     this.chartDailog = true;
     this.correct = this.questionList.length - this.answerError.length;
     this.inCorrect = this.answerError.length;
+    console.log(this.correct);
+    console.log(this.inCorrect);
+    
+  }
+
+  // Timer
+  startTime() {
+    this.timeIntervel = setInterval(() => {
+      if (this.seconds === 0) {
+        if (this.minutes > 0) {
+          this.minutes--;
+          this.seconds = 59;
+        } else {
+          this.stopTime()
+        }
+      } else {
+        this.seconds--
+      }
+    }, 1000)
+  }
+  stopTime() {
+    if (this.timeIntervel) {
+      clearInterval(this.timeIntervel)
+    }
   }
 
   ngOnDestroy(): void {

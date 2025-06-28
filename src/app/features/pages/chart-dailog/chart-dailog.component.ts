@@ -5,9 +5,6 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChartModule } from 'primeng/chart';
 import { ShowResultsDailogComponent } from "../show-results-dailog/show-results-dailog.component";
-// import { ChangeDetectorRef, Component, effect, inject, OnInit, PLATFORM_ID } from '@angular/core';
-// import { ChartModule } from 'primeng/chart';
-// import { AppConfigService } from '@/service/appconfigservice';
 
 @Component({
   selector: 'app-chart-dailog',
@@ -29,19 +26,7 @@ export class ChartDailogComponent implements OnInit {
 
   platformId = inject(PLATFORM_ID);
 
-  // configService = inject(AppConfigService);
-
-  // designerService = inject(DesignerService);
-
   constructor(private cd: ChangeDetectorRef) { }
-
-  // themeEffect = effect(() => {
-  //   if (this.configService.transitionComplete()) {
-  //     if (this.designerService.preset()) {
-  //       this.initChart();
-  //     }
-  //   }
-  // });
 
   ngOnInit() {
     this.correct = this.questionList.length - this.answerError.length;

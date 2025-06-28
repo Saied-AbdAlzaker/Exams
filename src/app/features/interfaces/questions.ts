@@ -23,7 +23,9 @@ export interface AnswerExam {
   correctAnswer:string,
   answers:Answer[],
   answerUser:string,
-  answerKey:string|null
+  answerUserKey:string|null
 }
+
+
 
 

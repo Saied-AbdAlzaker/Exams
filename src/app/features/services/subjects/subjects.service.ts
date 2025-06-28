@@ -14,8 +14,8 @@ export class SubjectsService {
   customSubjects():Observable<any>{
     return this._httpClient.get(`https://exam.elevateegy.com/api/v1/subjects?limit=6`)
   }
-  allSubjects():Observable<any>{
-    return this._httpClient.get(`https://exam.elevateegy.com/api/v1/subjects`)
+  allSubjects(page: number, limit: number):Observable<any>{
+    return this._httpClient.get(`https://exam.elevateegy.com/api/v1/subjects?page=${page}&limit=${limit}`)
   }
   
 }
